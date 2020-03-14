@@ -2,5 +2,6 @@
   "usingComponents": {
     "van-card": "vant-weapp/card",
     "van-button": "vant-weapp/button"
-  }
+  },
+  "enablePullDownRefresh": true
 }

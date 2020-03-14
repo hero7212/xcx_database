@@ -52,7 +52,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    productsCollection.get().then(res => {
+      this.setData({
+        products: res.data
+      }, res => {
+        console.log('更新完成')
+      })
+    })
   },
 
   /**
