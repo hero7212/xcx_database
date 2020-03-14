@@ -1,4 +1,6 @@
-// pages/complex/complex.js
+const db = wx.cloud.database()
+const _ = db.command
+const productsCollection = db.collection('products')
 Page({
 
   /**
@@ -7,60 +9,54 @@ Page({
   data: {
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  simple() {
+    productsCollection.get().then(res => {
+      this.setData({
+        products: res.data
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  red() {
+    productsCollection.where({
+      color: 'red'
+    }).get().then(res => {
+      this.setData({
+        products: res.data
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  lt() {
+    productsCollection.where({
+      price: _.lt(50)
+    }).get().then(res => {
+      this.setData({
+        products: res.data
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  in() {
+    productsCollection.where({
+      price: _.in([4,5,6])
+    }).get().then(res => {
+      this.setData({
+        products: res.data
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  and(){
+    productsCollection.where({
+      price: _.gt(20).and(_.lt(50))
+    }).get().then(res => {
+      this.setData({
+        products: res.data
+      })
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  limit() {
+    productsCollection.limit(10).get().then(res => {
+      this.setData({
+        products: res.data
+      })
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
