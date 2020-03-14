@@ -3,7 +3,8 @@
 <van-button type="danger" bindtap="lt">小于 50元</van-button>
 <van-button type="primary" bindtap="in">4-6之间</van-button>
 <van-button type="primary" bindtap="and">20到50</van-button>
-<van-button type="primary" bindtap="limit">只查10条</van-button>
+<van-button type="danger" bindtap="limit">只查10条</van-button>
+<van-button type="primary" bindtap="orderBy">orderBy</van-button>
 <block wx:for="{{products}}">
 <van-card
   price="{{item.price}}"

@@ -59,4 +59,13 @@ Page({
       })
     })
   },
+  orderBy(event) {
+    productsCollection
+    .orderBy('view','asc')
+    .orderBy('price','desc').get().then(res => {
+      this.setData({
+        products: res.data
+      })
+    })
+  }
 })
