@@ -1,4 +1,5 @@
 const db = wx.cloud.database()
+const _ = db.command
 const productsCollection = db.collection('products')
 Page({
 
@@ -86,5 +87,14 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+  click: function(event) {
+    console.log(event.currentTarget.dataset.id)
+
+    productsCollection.doc(event.currentTarget.dataset.id).update({
+      data: {
+        price: _.inc(10)
+      }
+    })
   }
 })

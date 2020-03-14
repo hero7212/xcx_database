@@ -4,5 +4,7 @@
   desc="{{item.color}}"
   title="{{item.title}}"
   thumb="{{item.image}}"
+  data-id="{{item._id}}"
+  bindtap="click"
 />
 </block>
