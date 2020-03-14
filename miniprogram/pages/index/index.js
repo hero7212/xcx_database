@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    products: []
+    page: 0
   },
 
   /**
@@ -65,7 +65,20 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    console.log("触底了")
+    let page = this.data.page + 20
+
+    productsCollection.skip(page).get().then(res => {
+      let new_data = res.data
+      let old_data = this.data.products
+      
+      this.setData({
+        products: old_data.concat(new_data),
+        page: page
+      }, res => {
+        console.log(res)
+      })
+    })
   },
 
   /**
