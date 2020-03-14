@@ -1,17 +1,23 @@
+const db = wx.cloud.database()
+const productsCollection = db.collection('products')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    products: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    productsCollection.get().then(res => {
+      this.setData({
+        products: res.data
+      })
+    })
   },
 
   /**

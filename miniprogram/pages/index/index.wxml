@@ -1,7 +1,8 @@
+<block wx:for="{{products}}">
 <van-card
-  num="2"
-  price="2.00"
-  desc="描述信息"
-  title="商品标题"
-  thumb="{{ imageURL }}"
+  price="{{item.price}}"
+  desc="{{item.color}}"
+  title="{{item.title}}"
+  thumb="{{item.image}}"
 />
+</block>
