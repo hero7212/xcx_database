@@ -74,5 +74,13 @@ Page({
     productsCollection.doc(this.data.id).remove().then(res => {
       console.log(res)
     })
-  }
+  },
+  batchDelete() {
+    wx.cloud.callFunction({
+      name: 'batchDelete',
+      success: res => {
+        console.log(res)
+      }
+    })
+  },
 })
