@@ -17,60 +17,40 @@ Page({
     productsCollection.doc(options.id).field({
       color: true,
       price: true,
-      title: true
+      title: true,
+      tags: true
     }).get().then(res => {
       this.setData({
-        product: res.data
+        product: res.data,
+        id: options.id
       })
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  addtag(event) {  
+    productsCollection.doc(this.data.id).update({
+      data: {
+        tags: _.push(['mini-program', 'cloud'])
+      }
+    }).then(res => {
+      console.log(res)
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  deltag() {
+    // productsCollection.doc(this.data.id).update({
+    //   data: {
+    //     tags: _.shift()
+    //   }
+    // }).then(res => {
+    //   console.log(res)
+    // })
+    productsCollection.doc(this.data.id).update({
+      data: {
+        tags: _.pop()
+      }
+    }).then(res => {
+      console.log(res)
+    })
   }
 })
