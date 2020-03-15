@@ -5,6 +5,7 @@
 <van-button type="primary" bindtap="and">20到50</van-button>
 <van-button type="danger" bindtap="limit">只查10条</van-button>
 <van-button type="primary" bindtap="orderBy">orderBy</van-button>
+<van-button type="warning" bindtap="count">{{count}}</van-button>
 <block wx:for="{{products}}">
 <van-card
   price="{{item.price}}"

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    count: 0
   },
   simple() {
     productsCollection.get().then(res => {
@@ -65,6 +65,16 @@ Page({
     .orderBy('price','desc').get().then(res => {
       this.setData({
         products: res.data
+      })
+    })
+  },
+  count(event) {
+    productsCollection.where({
+      price: 1
+    }).count().then(res => {
+      console.log(res)
+      this.setData({
+        count: res.total
       })
     })
   }
