@@ -69,5 +69,10 @@ Page({
         console.log(res)
       }
     })
+  },
+  delete() {
+    productsCollection.doc(this.data.id).remove().then(res => {
+      console.log(res)
+    })
   }
 })
