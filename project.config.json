@@ -79,9 +79,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "info",
 					"pathName": "pages/info/info",
+					"query": "id=d68532785e297ce304fd86ae2ade3b19",
 					"scene": null
 				}
 			]

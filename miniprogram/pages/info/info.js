@@ -1,4 +1,6 @@
-// pages/info/info.js
+const db = wx.cloud.database()
+const _ = db.command
+const productsCollection = db.collection('products')
 Page({
 
   /**
@@ -12,7 +14,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    productsCollection.doc(options.id).field({
+      color: true,
+      price: true,
+      title: true
+    }).get().then(res => {
+      this.setData({
+        product: res.data
+      })
+    })
   },
 
   /**
