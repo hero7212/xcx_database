@@ -62,4 +62,12 @@ Page({
       console.log(res)
     })
   },
+  batchUpdate() {
+    wx.cloud.callFunction({
+      name: 'batchUpdate',
+      success: res => {
+        console.log(res)
+      }
+    })
+  }
 })
