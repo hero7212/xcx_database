@@ -52,5 +52,14 @@ Page({
     }).then(res => {
       console.log(res)
     })
-  }
+  },
+  update(event) {  
+    productsCollection.doc(this.data.id).update({
+      data: {
+        title: '更新后的title'
+      }
+    }).then(res => {
+      console.log(res)
+    })
+  },
 })

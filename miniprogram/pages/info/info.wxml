@@ -5,4 +5,4 @@
 </van-cell-group>
 <van-button type="primary" bindtap="addtag">添加tag</van-button>
 <van-button type="info" bindtap="deltag">删除tag</van-button>
-<van-button type="warning">警告按钮</van-button>
+<van-button type="warning" bindtap="update">更新</van-button>
